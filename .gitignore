@@ -30,16 +30,8 @@ env/
 *.feather
 *.parquet
 *.h5
-
-# Outputs & results
-/results/
-/outputs/
-*.pdf
-*.png
-*.jpg
-*.jpeg
-*.svg
-*.eps
+*.txt
+*.TXT
 
 # ----------------------
 # LaTeX build files
@@ -74,3 +66,8 @@ Thumbs.db
 .env
 secrets.json
 config.yaml
+
+# macOS junk
+.DS_Store
+._.DS_Store
+*.code-workspace
