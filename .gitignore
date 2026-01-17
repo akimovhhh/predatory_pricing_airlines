@@ -32,6 +32,8 @@ env/
 *.h5
 *.txt
 *.TXT
+*.html
+*.zip
 
 # ----------------------
 # LaTeX build files
