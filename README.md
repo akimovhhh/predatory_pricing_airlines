@@ -1,16 +1,16 @@
 # Predatory Pricing in Airlines
 
-This repository analyzes pricing behavior and market dynamics in the US airline industry, focusing on competitive responses to Southwest Airlines' entry into Hawaiian inter-island routes. It combines public BTS (Bureau of Transportation Statistics) data on airline routes, fares, and market shares with fixed-effects econometric analysis and bootstrap confidence intervals.
+This repository contains code for analyzis of market dynamics in the US airline industry, focusing on responses to Southwest Airlines' entry into Hawaiian inter-island routes. It uses  public BTS (Bureau of Transportation Statistics) data on airline routes, fares, companies financial reports. I perform several descriptive analyzis and an even study using imputation estimator for event study. 
 
 ## Features
 
 - **Automated BTS data extraction** via Selenium web scraping for:
-  - DB1B Market data (quarterly, 2019–2024)
-  - DB1B Ticket data (quarterly, 2019–2024)  
-  - T100D Schedule data (annual, 2005–2024)
-  - T-F41 Financial data (annual, 2005–2024)
-- **Panel data construction** merging routes, fares, capacity, and market structure variables
-- **Event study regression** with fixed effects (time, market, state×COVID interactions)
+  - DB1B Market data (quarterly, 2019–2025)
+  - DB1B Ticket data (quarterly, 2019–2025)  
+  - T100D Schedule data (annual, 2005–2025)
+  - T-F41 Financial data (annual, 2005–2025)
+- **Panel data construction** merging routes, fares, capacity, and market structure variables and store it in duckdb database
+- **Event study regression** - main analytical exercise, using imputation estimator for even study. 
 - **Bootstrap confidence intervals** (1,000 replications with market-level clustering)
 - **Robustness checks** including placebo tests and pre-trend tests (Wald, z-test, t-test equivalence)
 - **Publication-ready visualizations** using Plotly (PNG + interactive HTML exports)
@@ -52,10 +52,10 @@ predatory_pricing_airlines/
 
 Open `data_extraction.ipynb` and execute cells in order:
 
-- **T100D** (annual carrier schedule): Years 2005–2024
-- **T-F41** (annual financial statements): Years 2005–2024
-- **DB1B Market** (quarterly origin-destination survey): Quarters 2019 Q1–2024 Q4
-- **DB1B Ticket** (quarterly ticket-level itinerary): Quarters 2019 Q1–2024 Q4
+- **T100D** (annual carrier schedule): Years 2005–2025
+- **T-F41** (annual financial statements): Years 2005–2025
+- **DB1B Market** (quarterly origin-destination survey): Quarters 2019 Q1–2025
+- **DB1B Ticket** (quarterly ticket-level itinerary): Quarters 2019 Q1–2025
 
 Each section downloads .zip files from transtats.bts.gov, extracts CSV files to `data/[DATASET]/raw/`, and logs progress.
 
@@ -75,7 +75,7 @@ Run `main_panel_creation.ipynb` to:
 
 Execute `main_analysis.ipynb` to:
 
-- **Event study regression:** Fixed-effects model with market, time, and state×COVID interactions
+- **Event study regression:**
 - **Bootstrap:** 1,000 market-level cluster resamples with 95% confidence intervals
 - **Robustness checks:**
   - Placebo test (visual inspection; no bootstrap)
